@@ -6,7 +6,11 @@
 
 ## What is ERC-721?
 
+(https://education.district0x.io/general-topics/understanding-ethereum/erc-721-tokens/)
+
 ## What is an Ethereum Improvement Proposal?
+
+(https://ethereum.org/en/eips/)
 
 ## What is the Ethereum Virtual Machine? 
 
