@@ -23,14 +23,10 @@ let signer;
 const provider = new ethers.providers.WebSocketProvider(
     'wss://goerli.infura.io/ws/v3/555a93ec0c824ebe96a4d930dcf30124');
 
-const private_key = 'f2b6c1ba66e25eae8e6b3fcbab8f02e94cb942549bbede6cbd02f1b7d60ccad2';
-const wallet = new ethers.Wallet(private_key);
-const account = wallet.connect(provider);
-
 MoodContract = new ethers.Contract(
     MoodContractAddress,
     MoodContractABI,
-    account
+    provider
 );
 
 async function getMood() {
@@ -39,8 +35,10 @@ async function getMood() {
  console.log(Mood);
 }
 
-function main() {
-    getMood();
+async function main() {
+    console.log("1");
+    await getMood();
+    console.log("2");
 }
 
 main();
