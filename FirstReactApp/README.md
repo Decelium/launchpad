@@ -1,4 +1,8 @@
-# Your first react website on Decelium.com
+<img src="../images/Logo.png" alt="Decelium Logo" width="50"/>
+
+# Your first React website on Decelium.com
+
+React is a framework for writing user interfaces. In this tutorial we will deploy a simple React website to Decelium. At the end of this tutorial you will have your first React website on Decelium.
 
 ## Previous tasks
 

@@ -1,6 +1,8 @@
+<img src="../images/Logo.png" alt="Decelium Logo" width="50" />
+
 # An NFT-issuing website on Decelium
 
-In this tutorial we will create a website that will issue ERC-721 NFTs, and deploy it on Decelium.
+In this tutorial we will create a website that will issue ERC-721 non-fungible tokens (NFTs), and deploy it on Decelium. NFTs are unique tokens, and each NFT has associated with it a URI which points to an online asset. Our online assets are data structures describing items in a (fictional) online game. The holder of the NFT is the owner of the game item. There are five different game items, so there will be five NFTs associated with the contract, each with a unique ID and a unique URI.  You will learn how to write an ERC-721 contract and connect it to a website that issues tokens from the contract.  At the end of this tutorial you will have a Decelium-deployed website that will allow a visitor to award themselves a game item, up to a maximum of five total items over all visitors.
 
 ## Prerequisites
 
@@ -236,4 +238,4 @@ The electronic assets that our NFTs will point to are JSON structures describing
 The third argument, `dest_path` is a path that needs to begin with a slash and end with a `.ipfs` filename.     
 Note that the trailing slash in the fourth argument is necessary. In the fifth argument XXXXXXXXXX is the arbitrary string of hexadecimal digits you created and entered into the `NFTContract.sol` file.      
 4.  Your website should be deployed to Decelium. If it has successfully deployed, you will see a line like `deployed...  obj-XXXXXXXXXX  as  [filename]` where the `xxxx...` represents hexadecimal digits.
-You should be able to view your website deployed on Decelium at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/` (note the trailing slash). You can view the electronic assets associated with your NFTs at 
+You should be able to view your website deployed on Decelium at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/` (note the trailing slash). You can view the electronic assets associated with your NFTs at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/[Id].json` where `[Id]` is the token ID of the NFT, which is a number from 0-4.

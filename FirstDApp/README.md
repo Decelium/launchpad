@@ -1,4 +1,8 @@
+<img src="../images/Logo.png" alt="Decelium Logo" width="50"/>
+
 # Your first dApp
+
+A decentralized application (dApp) is an application making use of decentralized technologies such as smart contracts.   Smart contracts can contain variables whose value is stored on the blockchain. You will write a contract that allows the value of a variable on the blockchain to be set and read.  At the end of this tutorial you will have a smart contract on the blockchain, and a website and command-line JavaScript scripts that let you set and get the value of the variable.
 
 ## Prerequisites
 
@@ -13,11 +17,12 @@
 9. You should have an Ethereum wallet, and have added some GoerliETH to the wallet using the Goerli faucet. This is most easily done with MetaMask.
 
 
-## Create a project directory
+## Creating and deploying the dApp
 
-## Create mood.sol in the project directory
+### Create and compile the smart contract
 
-Create the following Solidity program in your project directory using a text editor:
+1. Create a project directory
+2. Create the following Solidity program, called `mood.sol`, in your project directory using a text editor:
 
     // SPDX-License-Identifier:  MIT
     pragma solidity ^0.8.1;
