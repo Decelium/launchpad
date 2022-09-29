@@ -49,16 +49,15 @@
                 );
             });
         });
-        
+                
         async function awardItem() {
-            const awardNFTPromise = NFTContract.awardItem();
-            await awardNFTPromise;
-            console.log( "https://test.paxfinancial.ai/obj/obj-afc93eb2842d/"+awardNFTPromise+".json";);
+            const awardNFTPromise = await NFTContract.awardItem();
+            console.log( "https://test.paxfinancial.ai/obj/obj-afc93eb2842d/"+awardNFTPromise+".json");
         }
         
     </script>    
     <div>
-        <h1>Award yourself an NFT!</h1>
+        <h1>Award yourself a Game Item!</h1>
         <p>You will need MetaMask installed for this to work. Make sure MetaMask is set to the Goerli Testnet.</p>
         <p>Click the button to award yourself a Game Item (a total of 5 can be awarded, first come, first served):</p>
         <button onclick="awardItem()">Award Game Item</button>       
