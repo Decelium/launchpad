@@ -13,12 +13,13 @@ Before starting this tutorial you should have:
 3. Installed node.js.
 4. Installed the Solidity compiler, which is done with `npm install -g solc`.
 5. Installed MetaMask.
-6. Created an Ethereum wallet, and added some GoerliETH to the wallet using Goerli faucet. This is most easily done with MetaMask.
-7. Created an account on Infura. 
+6. Created an Ethereum wallet, which is most easily done with MetaMask.
+7. Added some Goerli Testnet Ether to your Ethereum wallet, which can be done at this [faucet](https://faucets.chain.link/).
+8. Created an account on Infura. 
 
-## Creating the NFT-issuing website
+## Create the NFT-issuing website
 
-### Creating the assets for the NFTs
+### Create the assets for the NFTs
 
 The electronic assets that our NFTs will point to are JSON structures describing items for a (fictitious) game.  These will be deployed on Decelium, and each NFT will contain the URI of its associated JSON.  There will be five of these items, and hence our website will issue a maximum of five NFTs.
 
@@ -110,20 +111,20 @@ The electronic assets that our NFTs will point to are JSON structures describing
 
 2. In the file `NFT/NFTContract.sol`, replace the `XXXXXXXXXX` with an arbitrarily chosen (i.e. just make it up) string of hexadecimal digits.  These identifiers have to be unique, but there is no easy way to know if one has already been used. If you choose one that has already been used the deployment-to-Decelium step below will not be successful.  However, by choosing a long arbitrarily-chosen string, it is unlikely that you will choose one that has already been used.
 
-4. In the project directory (e.g. `NFT`) install the OpenZeppelin contracts by running `npm install @openzeppelin/contracts`.
+3. In the project directory (e.g. `NFT`) install the OpenZeppelin contracts by running `npm install @openzeppelin/contracts`.
 
-5. Compile the contract to a `.bin` file by running
+4. Compile the contract to a `.bin` file by running
 
         solcjs --bin --include-path node_modules/ --base-path . NFTContract.sol
    This should create a file `NFTContract_sol_Token.bin`. It may also create other `.bin` files beginning with `@openzeppelin` (e.g. `@openzeppelin_contracts_token_ERC721_ERC721_sol_ERC721.bin` and similar names). These other files will not needed by us and can be ignored. 
-6. Compile the contract to an `.abi` file by running
+5. Compile the contract to an `.abi` file by running
 
         solcjs --abi --include-path node_modules/ --base-path . NFTContract.sol
    This should create a file `NFTContract_sol_Token.abi`. It may also create other `.abi` files beginning with `@openzeppelin` (e.g. `@openzeppelin_contracts_token_ERC721_ERC721_sol_ERC721.abi` and similar names). These other files will not needed by us and can be ignored.
    
 ### Write the deploy script and deploy the contract on the Goerli Testnet
 
-7. In the project directory create a JavaScript file called `deploy.js` with the following contents:
+1. In the project directory create a JavaScript file called `deploy.js` with the following contents:
 
         #!/usr/local/bin/node
 
@@ -135,7 +136,7 @@ The electronic assets that our NFTs will point to are JSON structures describing
         abi = JSON.parse(fs.readFileSync('NFTContract_sol_GameItem.abi').toString());
 
         const provider = new ethers.providers.WebSocketProvider(
-            'wss://goerli.infura.io/ws/v3/555a93ec0c824ebe96a4d930dcf30124');
+            'wss://goerli.infura.io/ws/v3/API_KEY');
         const private_key = 'YOUR_ETHEREUM_WALLET_PRIVATE_KEY';
         const wallet = new ethers.Wallet(private_key);
         const account = wallet.connect(provider);
@@ -151,14 +152,14 @@ The electronic assets that our NFTs will point to are JSON structures describing
 
         main();
 
-8. In the deploy script (i.e. `deploy.js`) you will need to put the API key you get from Infura, and the private key to your Ethereum wallet.  
-10. Run the deploy script with `node deploy.js`. Copy the contract address which is printed out.
-11. Import your tokens to MetaMask by opening MetaMask, selecting "Import Tokens", and entering the contract address. It should show that you have 0 ITM, which is correct since you haven't issued any tokens yet.
+    Replace `INFURA_API_KEY` with an Infura API key obtained from your Infura dashboard. Replace `YOUR_ETHEREUM_WALLET_PRIVATE_KEY` with your Ethereum wallet private key.
+2. Run the deploy script with `node deploy.js` in the project directory. If the deployment is successful, the first line output will be the contract address. Copy the contract address to the clipboard or to a temporary text file; it will be needed in subsequent steps.
+3. Import your tokens to MetaMask by opening MetaMask, selecting "Import Tokens", and entering the contract address. It should show that you have 0 ITM, which is correct since you haven't issued any tokens yet.
 
-### Write the HTML file
+### Create the web interface
 
-2. `cd` into `NFT/static`.
-3. Within `static`, create a file called `index.html`, with the following contents.  Replace `YOUR_CONTRACT_ADDRESS` with the contract address that was printed out when you deployed the Faucet contract. The data structure following `const NFTContractABI =` is the contents of the file `NFTContract_sol_Token.abi` that was created when you compiled the NFT contract.
+1. `cd` into `NFT/static`.
+2. Within `static`, create a file called `index.html`, with the following contents.  Replace `YOUR_CONTRACT_ADDRESS` with the contract address that was printed out when you deployed the Faucet contract. The data structure following `const NFTContractABI =` is the contents of the file `NFTContract_sol_Token.abi` that was created when you compiled the NFT contract.
 
         <!DOCTYPE html>
         <html lang="en">
@@ -192,7 +193,7 @@ The electronic assets that our NFTs will point to are JSON structures describing
                 type="application/javascript"
             ></script>    
             <script>  
-                const NFTContractAddress = "0x145d7A8EB4D1Ae9c4ccef80d2295fdF76E345626";
+                const NFTContractAddress = "YOUR_CONTRACT_ADDRESS";
                 const NFTContractABI =  
         [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"awardItem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"}]
                       ;
@@ -214,7 +215,6 @@ The electronic assets that our NFTs will point to are JSON structures describing
 
                 async function awardItem() {
                     const awardNFTPromise = await NFTContract.awardItem();
-                    console.log( "https://test.paxfinancial.ai/obj/obj-afc93eb2842d/"+awardNFTPromise+".json");
                 }
 
             </script>    
@@ -237,5 +237,5 @@ The electronic assets that our NFTs will point to are JSON structures describing
     </pre>
 The third argument, `dest_path` is a path that needs to begin with a slash and end with a `.ipfs` filename.     
 Note that the trailing slash in the fourth argument is necessary. In the fifth argument XXXXXXXXXX is the arbitrary string of hexadecimal digits you created and entered into the `NFTContract.sol` file.      
-4.  Your website should be deployed to Decelium. If it has successfully deployed, you will see a line like `deployed...  obj-XXXXXXXXXX  as  [filename]` where the `xxxx...` represents hexadecimal digits.
+4.  Your website should be deployed to Decelium. If it has successfully deployed, you will see a line like `deployed...  obj-XXXXXXXXXX  as  [filename]`.
 You should be able to view your website deployed on Decelium at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/` (note the trailing slash). You can view the electronic assets associated with your NFTs at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/[Id].json` where `[Id]` is the token ID of the NFT, which is a number from 0-4.

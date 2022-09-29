@@ -7,15 +7,16 @@ A cryptocurrency faucet issues funds from a cryptocurrency to a user.  In this t
 
 ## Prerequisites
 
-This tutorial assumes you have already done the following:
+Before you start this tutorial you should have done the following:
 
 1. Installed Decelium.
 2. Created a Decelium wallet, added a user to the wallet, and added some CPU to the user's account.
 3. Installed node.js.
 4. Installed the Solidity compiler, which is done with `npm install -g solc`.
 5. Installed MetaMask.
-6. Created an Ethereum wallet, and added some GoerliETH to the wallet using Goerli faucet. This is most easily done with MetaMask.
-7. Created an account on Infura. 
+6. Created an Ethereum wallet, which is most easily done with MetaMask.
+7. Added some Goerli Testnet Ether to your Ethereum wallet, which can be done at this [faucet](https://faucets.chain.link/).
+8. Created an account on Infura. 
 
 
 
@@ -50,11 +51,11 @@ This tutorial assumes you have already done the following:
 
         solcjs --abi --include-path node_modules/ --base-path . faucetContract.sol
    This should create a file `faucetContract_sol_Token.abi`. It may also create other `.abi` files beginning with `@openzeppelin` (e.g. `@openzeppelin_contracts_token_ERC20_ERC20_sol_ERC20.abi` and similar names). These other files will not needed by us and can be ignored. 
-7. 
 
-### Write the deploy script and deploy the contract on the Goerli Testnet
 
-7. In the project directory create a JavaScript file called `deploy.js` with the following contents:
+### Deploy the contract on the Goerli Testnet
+
+1. In the project directory create a JavaScript file called `deploy.js` with the following contents:
 
         #!/usr/local/bin/node
 
@@ -66,7 +67,7 @@ This tutorial assumes you have already done the following:
         abi = JSON.parse(fs.readFileSync('faucetContract_sol_Token.abi').toString());
 
         const provider = new ethers.providers.WebSocketProvider(
-            'wss://goerli.infura.io/ws/v3/555a93ec0c824ebe96a4d930dcf30124');
+            'wss://goerli.infura.io/ws/v3/API_KEY');
         const private_key = 'YOUR_ETHEREUM_WALLET_PRIVATE_KEY';
         const wallet = new ethers.Wallet(private_key);
         const account = wallet.connect(provider);
@@ -81,16 +82,15 @@ This tutorial assumes you have already done the following:
         }
 
         main();
+    Replace `INFURA_API_KEY` with an Infura API key obtained from your Infura dashboard. Replace `YOUR_ETHEREUM_WALLET_PRIVATE_KEY` with your Ethereum wallet private key.
+2. Our deploy script example as written sets the name and symbol for our cryptocurrency to `DeceliumBucks` and `DecBUX`, but you are free to change them to something you prefer by editing the line `const contract = await myContract.deploy("DeceliumBucks","DecBUX");` in the function `main()`.
+3. Run the deploy script with `node deploy.js` in the project directory. If the deployment is successful, the first line output will be the contract address. Copy the contract address to the clipboard or to a temporary text file; it will be needed in subsequent steps. 
+4. Import your currency to MetaMask by opening MetaMask, selecting "Import Tokens", and entering the contract address.
 
-8. In the deploy script (i.e. `deploy.js`) you will need to put the API key you get from Infura, and the private key to your Ethereum wallet.  
-9. Our deploy script example as written sets the name and symbol for our cryptocurrency to `DeceliumBucks` and `DecBUX`, but you are free to change them to something you prefer by editing the line `const contract = await myContract.deploy("DeceliumBucks","DecBUX");` in the function `main()`.
-10. Run the deploy script with `node deploy.js`. Copy the contract address which is printed out.
-11. Import your currency to MetaMask by opening MetaMask, selecting "Import Tokens", and entering the contract address.
+### Create the web interface
 
-### Write the HTML file
-
-2. Within the project directory created a directory called `static` and `cd` into it.
-3. Within `static`, create a file called `index.html`, with the following contents.  Replace `YOUR_CONTRACT_ADDRESS` with the contract address that was printed out when you deployed the Faucet contract. The data structure following `const MintContractABI =` is the contents of the file `faucetContract_sol_Token.abi` that was created when you compiled the Faucet contract. You can of course edit the HTML file to change the symbol DecBUX to the symbol for your cryptocurrency.
+1. Within the project directory created a directory called `static` and `cd` into it.
+2. Within `static`, create a file called `index.html`, with the following contents.  Replace `YOUR_CONTRACT_ADDRESS` with the contract address that was printed out when you deployed the Faucet contract. The data structure following `const MintContractABI =` is the contents of the file `faucetContract_sol_Token.abi` that was created when you compiled the Faucet contract. You can of course edit the HTML file to change the symbol DecBUX to the symbol for your cryptocurrency.
 
         <!DOCTYPE html>
         <html lang="en">
@@ -164,7 +164,7 @@ This tutorial assumes you have already done the following:
             </div>
           </body>
         </html>
-4. Check that the web page works by serving it on a local webserver. A convenient choice is `lite-server`, which you install with `npm install -g lite-server`. Then you can invoke lite-server by typing `lite-server` at the command line in the directory containing the HTML file, `CryptocurrencyFaucet/static`.  You can then view the web page at `http://localhost:3000`. Entering a number into the form and pressing the button should cause MetaMask to open and request you to confirm the transaction. Once the transaction is confirmed, the tokens you have minted in your cryptocurrency should appear in your wallet.
+3. Check that the web page works by serving it on a local webserver. A convenient choice is `lite-server`, which you install with `npm install -g lite-server`. Invoke lite-server by typing `lite-server` at the command line in the directory containing the HTML file, `CryptocurrencyFaucet/static`.  You can then view the web page at `http://localhost:3000`. Entering a number into the form and pressing the button should cause MetaMask to open and request you to confirm the transaction. Once the transaction is confirmed, the tokens you have minted in your cryptocurrency should appear in your wallet.
 
 ### Deploy the web page to Decelium
 
