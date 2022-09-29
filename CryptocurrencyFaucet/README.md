@@ -145,10 +145,10 @@ This tutorial assumes you have already done the following:
                 });
 
                 async function mint() {
-                    const decBUXQuantity = document.getElementById("decBUXQuantity").value;
-                    console.log(decBUXQuantity);
-                    const mintDecBUXPromise = MintContract.mint(BigInt(decBUXQuantity * 1e18));
-                    await mintDecBUXPromise;
+                    const cryptocurrencyQuantity = document.getElementById("cryptocurrencyQuantity").value;
+                    console.log(cryptocurrencyQuantity);
+                    const mintCryptocurrencyPromise = MintContract.mint(BigInt(crytpocurrencyQuantity * 1e18));
+                    await mintCryptoCurrencyPromise;
                 }
 
             </script>    
@@ -156,8 +156,8 @@ This tutorial assumes you have already done the following:
                 <h1>Mint yourself some DecBUX!</h1>
                 <p>You will need MetaMask installed for this to work. Make sure MetaMask is set to the Goerli Testnet.</p>
                 <p>Enter the amount of DecBUX to mint:</p>
-                <label for="decBUXQuantity">DecBUX amount:</label> <br />
-                <input type="number" step="any" min="0" id="decBUXQuantity">
+                <label for="cryptocurrencyQuantity">DecBUX amount:</label> <br />
+                <input type="number" step="any" min="0" id="cryptocurrencyQuantity">
                 <button onclick="mint()">Mint</button>
                 <p>To import the minted tokens into MetaMask you will need the Token Contract Address, 
                    which is YOUR_CONTRACT_ADDRESS.</p>       
