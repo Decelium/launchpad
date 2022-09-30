@@ -9,15 +9,16 @@ Each directory folder contains a tutorial in the README.md file, and a subdirect
 
 ## Tutorials
 
-*FirstReactApp* - a simple React website
+[**FirstReactApp**](./FirstReactApp/README.md) - Use the JavaScript UI-design library React to create a website showing the rotating React logo, and deploy it on Decelium.
 
-*UnityCube* - a simple scene from Unity
+[**UnityCube**](./UnityCube/README.md) - Use the Unity 3D Engine to create and render a scene showing a cube on a landscape and build it in a format suitable for it to be deployed on Decelium.
 
-*FirstDApp* - a decentralized app (dApp) that lets you set and get a variable on the blockchain
+[**FirstDApp**](./FirstDApp/README.md) - A decentralized app (dApp) in which you create and deploy an Ethereum smart contract with a variable stored on the blockchain, and create web and command-line interfaces using JavaScript to get and set the variable's value. The smart contract is written in the Ethereum smart contract language Solidity. The web interface is deployed on Decelium.
 
-*CryptocurrencyFaucet* - a website and smart contract that lets you issue funds from your own cryptocurrency
+[**CryptocurrencyFaucet**](./CryptocurrencyFaucet/README.md) - Write and deploy an Ethereum smart contract and a JavaScript-based web interface to create your own cryptocurrency and mint funds from the currency to a website visitor. The smart contract is written in the Ethereum smart contract language Solidity. The web interface is deployed on Decelium.
 
-*NFT* - a website and smart contract that lets users assign themselves non-fungible tokens you create
+[**NFT**](./NFT/README.md) - Write and deploy an Ethereum smart contract and a JavaScript-based web interface that allows visitors to issue themselves non-fungible tokens (NFTs) representing items in a video game. The smart contract is written in the Ethereum smart contract language Solidity. The web interface is deployed on Decelium.
+
 
 ## Recommended order
 
