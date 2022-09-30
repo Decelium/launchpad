@@ -2,7 +2,10 @@
 
 # Decelium Launchpad
 
-This repository contains tutorials to get you started using Decelium, the decentralized web hosting service.  The examples show how to create a variety of kinds of websites and deploy them to Decelium.  They use React, Unity, and Ethereum smart contracts written in Solidity. At the end of these tutorials you will have an understanding of how to use Decelium with a range of types of web applications.
+Decelium is a decentralized web hosting service. This repository contains tutorials to get you started using Decelium with a variety of kinds of web sites. The examples use React, Unity and Ethereum smart contracts. At the end of these tutorials you will have have an understanding of using the decentralized web with several important web technologies. 
+
+Each directory folder contains a tutorial in the README.md file, and a subdirectory `final` which shows the final state of the project obtained after completing the tutorial.
+
 
 ## Tutorials
 
@@ -25,5 +28,6 @@ We recommend following the tutorials in this order:
 3. FirstDApp
 4. CryptocurrencyFaucet
 5. NFT
+
 
 
