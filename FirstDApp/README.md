@@ -2,7 +2,8 @@
 
 # Your first dApp
 
-A decentralized application (dApp) is an application making use of decentralized technologies such as smart contracts.   Smart contracts can contain variables whose value is stored on the blockchain. You will write a contract that allows the value of a variable on the blockchain to be set and read.  At the end of this tutorial you will have a smart contract on the blockchain, and a website and command-line JavaScript scripts that let you set and get the value of the variable.
+A decentralized application (dApp) is an application making use of decentralized technologies such as smart contracts.   Smart contracts can contain variables whose value is stored on the blockchain. In this tutorial you will write a contract, using the Ethereum smart contract language Solidity, that creates a variable on the blockchain and provides for its value to be set and read, and you will deploy this contract on the blockchain on a testing network.
+You will also write a JavaScript-based web interface which allows a visitor to set and get the variable's value, as well as a Node.js command-line interface.
 
 ## Prerequisites
 
@@ -12,7 +13,7 @@ This tutorial assumes you have already:
 3. Installed the Solidity compiler `solcjs`. You can install the compiler via node.js with the command `npm install -g solc`.
 4. Created an Infura account.
 5. Installed MetaMask.
-6. Created an Ethereum wallet, added some GoerliETH to the wallet using the Goerli faucet. This is most easily done with MetaMask.
+6. Created an Ethereum wallet and added some GoerliETH to the wallet using the Goerli faucet. This is most easily done with MetaMask.
 
 ## Creating and deploying the dApp
 

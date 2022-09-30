@@ -4,7 +4,6 @@
 
 A cryptocurrency faucet issues funds from a cryptocurrency to a user.  In this tutorial you will create your own cryptocurrency, use Solidity to write a contract for a faucet for the currency, use a JavaScript script to deploy the contract, and deploy the faucet website on Decelium.  At the end of the contract you will have a Decelium-deployed website which will issue amounts of your cryptocurrency to a user who visits the website.
 
-
 ## Prerequisites
 
 Before you start this tutorial you should have done the following:

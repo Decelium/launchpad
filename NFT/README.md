@@ -2,7 +2,7 @@
 
 # An NFT-issuing website on Decelium
 
-In this tutorial we will create a website that will issue ERC-721 non-fungible tokens (NFTs), and deploy it on Decelium. NFTs are unique tokens, and each NFT has associated with it a URI which points to an online asset. Our online assets are data structures describing items in a (fictional) online game. The holder of the NFT is the owner of the game item. There are five different game items, so there will be five NFTs associated with the contract, each with a unique ID and a unique URI.  You will learn how to write an ERC-721 contract and connect it to a website that issues tokens from the contract.  At the end of this tutorial you will have a Decelium-deployed website that will allow a visitor to award themselves a game item, up to a maximum of five total items over all visitors.
+In this tutorial we will create a website that will issue ERC-721 non-fungible tokens (NFTs), and deploy it on Decelium. NFTs are unique tokens, and each NFT has associated with it a URI which points to an online asset. Our online assets are data structures describing items in a (fictional) online game. The holder of the NFT is the owner of the game item. There are five different game items, so there will be five NFTs associated with the contract, each with a unique ID and a unique URI.  You will learn how to write an ERC-721 contract in Solidity and connect it to a JavaScript-based web interface that issues tokens from the contract.  At the end of this tutorial you will have a Decelium-deployed website that will allow a visitor to award themselves a game item, up to a maximum of five total items over all visitors.
 
 ## Prerequisites
 
