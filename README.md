@@ -2,7 +2,7 @@
 
 # Decelium Launchpad
 
-Decelium is a decentralized web hosting service. This repository contains tutorials to get you started using Decelium with a variety of kinds of web sites. The examples use React, Unity and Ethereum smart contracts. At the end of these tutorials you will have have an understanding of using the decentralized web with several important web technologies. 
+[Decelium](https://www.decelium.com/) is a decentralized web hosting service. This repository contains tutorials to get you started using Decelium with a variety of kinds of web sites. The examples use React, Unity and Ethereum smart contracts. At the end of these tutorials you will have have an understanding of using the decentralized web with several important web technologies. 
 
 Each directory folder contains a tutorial in the README.md file, and a subdirectory `final` which shows the final state of the project obtained after completing the tutorial.
 

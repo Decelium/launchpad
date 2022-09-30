@@ -2,7 +2,7 @@
 
 # A Simple Unity Scene
 
-In this tutorial we will create a simple scene with Unity.
+In this tutorial we will use the Unity 3D editor to create a simple scene showing a cube on a landscape, build it in a format suitable for deployment on Decelium, and deploy it on Decelium. 
 
 ## Prerequisites
 
@@ -12,26 +12,24 @@ Before you start this tutorial you should have done the following:
 2. Created a Decelium wallet, added a user to the wallet, and added some CPU to the user's account.
 3. Installed Unity.  
 
-
 ## Create the scene in Unity
 
-from the Unity Hub, create a new project by clicking "New Project"
-select "3D" from the list
-select "Create Project"
-select GameObject > 3D Object > Cube 
-select File > Save
-select File > Build Settings
-under "Platform" select "WebGL"
-under "IL2CPP Code Generation" select "Faster (smaller) builds"
-click "Player Settings" button
-under "Other Settings" change "Color Map" from "Linear" to "Gamma" 
-click the "Change to gamma" button in the dialogue box to confirm
-close the "Project Settings" window
-press Add Open Scenes in the Build Settings window
-select Build and Run in the Build Settings window
-click New Folder. Name the new folder Build. Select the Build folder and press Select Folder
-wait for the build to complete
-A copy of the website will have been built into the directory Build
+1. From the Unity Hub, create a new project by clicking **New Project**
+2. select **3D** from the list
+3. select **Create Project**
+4. select **GameObject > 3D Object > Cube** 
+5. select **File > Save**
+6. select **File > Build Settings**
+7. under **Platform** select **WebGL**
+8. under **IL2CPP Code Generation** select **Faster (smaller) builds**
+9. click **Player Settings** button
+10. under **Other Settings** change **Color Map** from **Linear** to **Gamma** 
+11. click the **Change to gamma** button in the dialogue box to confirm
+12. close the **Project Settings** window
+13. press **Add Open Scenes** in the **Build Settings** window
+14. select **Build and Run** in the **Build Settings** window
+15. click **New Folder**. Name the new folder `Build`. Select the `Build` folder and press **Select Folder**.
+16. Wait for the build to complete. A copy of the website will have been built into the directory Build.
 
 ## Deploy the website to Decelium
 
