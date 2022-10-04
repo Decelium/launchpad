@@ -7,3 +7,8 @@ npm install -g solc
 npm install -g ethers-cli
 npm install -g ethers
 npm install -g fs
+npm install -g mocha
+npm install --save chai
+npm install node-fetch
+
+
