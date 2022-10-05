@@ -2,7 +2,7 @@
 pragma solidity ^0.8.1;
 
 contract MoodDiary{
-    string mood;
+    string mood="initial";
   
     //create a function that writes a mood to the smart contract
     function setMood(string memory _mood) public{

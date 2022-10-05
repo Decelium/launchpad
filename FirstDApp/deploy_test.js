@@ -18,7 +18,7 @@ const myContract = new ethers.ContractFactory(abi, bytecode, account);
 
 async function main() {
     const contract = await myContract.deploy();
-    
+    await contract.deployed();
     console.log(contract.address);
     console.log(contract.deployTransaction);
 }
