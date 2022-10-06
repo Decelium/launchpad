@@ -22,22 +22,22 @@ This tutorial assumes you have already:
 1. Create a project directory
 2. Create the following Solidity program, called `mood.sol`, in your project directory using a text editor:
 
-    // SPDX-License-Identifier:  MIT
-    pragma solidity ^0.8.1;
+        // SPDX-License-Identifier:  MIT
+        pragma solidity ^0.8.1;
 
-    contract MoodDiary{
-        string mood;
+        contract MoodDiary{
+            string mood="initial";
   
-        //create a function that writes a mood to the smart contract
-        function setMood(string memory _mood) public{
-            mood = _mood;
-        }
+            //create a function that writes a mood to the smart contract
+            function setMood(string memory _mood) public{
+                mood = _mood;
+            }
 
-        //create a function that reads the mood from the smart contract
-        function getMood() public view returns(string memory){
-            return mood;
+            //create a function that reads the mood from the smart contract
+            function getMood() public view returns(string memory){
+                return mood;
+            }
         }
-    }
 
 3. Compile `mood.sol`  to `.bin` and `.abi` files with the following commands in your project directory:
 
@@ -60,8 +60,7 @@ This tutorial assumes you have already:
         bytecode = fs.readFileSync('mood_sol_MoodDiary.bin').toString();
         abi = JSON.parse(fs.readFileSync('mood_sol_MoodDiary.abi').toString());
 
-        const provider = new ethers.providers.WebSocketProvider(
-            'wss://goerli.infura.io/ws/v3/INFURA_API_KEY');
+        const provider = new ethers.providers.InfuraProvider("goerli", INFURA_API_KEY);
         const private_key = 'YOUR_ETHEREUM_WALLET_PRIVATE_KEY';
         const wallet = new ethers.Wallet(private_key);
         const account = wallet.connect(provider);
@@ -70,7 +69,7 @@ This tutorial assumes you have already:
 
         async function main() {
             const contract = await myContract.deploy();
-
+            await contract.deployed();
             console.log(contract.address);
             console.log(contract.deployTransaction);
         }
@@ -286,5 +285,5 @@ You should be able to view your website deployed on Decelium at `https://test.pa
  
 ## Acknowledgment
 
-This tutorial is based on a tutorial from  [LearnWeb3](https://learnweb3.io).
+This tutorial is based on a tutorial from [LearnWeb3](https://learnweb3.io).
 
