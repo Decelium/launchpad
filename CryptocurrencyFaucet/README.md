@@ -64,9 +64,8 @@ Before you start this tutorial you should have done the following:
 
         bytecode = fs.readFileSync('faucetContract_sol_Token.bin').toString();
         abi = JSON.parse(fs.readFileSync('faucetContract_sol_Token.abi').toString());
-
-        const provider = new ethers.providers.WebSocketProvider(
-            'wss://goerli.infura.io/ws/v3/API_KEY');
+        
+        const provider = new ethers.providers.InfuraProvider("goerli",INFURA_API_KEY);
         const private_key = 'YOUR_ETHEREUM_WALLET_PRIVATE_KEY';
         const wallet = new ethers.Wallet(private_key);
         const account = wallet.connect(provider);
@@ -75,7 +74,7 @@ Before you start this tutorial you should have done the following:
 
         async function main() {
             const contract = await myContract.deploy("DeceliumBucks","DecBUX");
-
+            await contract.deployed();
             console.log(contract.address);
             console.log(contract.deployTransaction);
         }
