@@ -239,3 +239,7 @@ The third argument, `dest_path` is a path that needs to begin with a slash and e
 Note that the trailing slash in the fourth argument is necessary. In the fifth argument XXXXXXXXXX is the arbitrary string of hexadecimal digits you created and entered into the `NFTContract.sol` file.      
 4.  Your website should be deployed to Decelium. If it has successfully deployed, you will see a line like `deployed...  obj-XXXXXXXXXX  as  [filename]`.
 You should be able to view your website deployed on Decelium at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/` (note the trailing slash). You can view the electronic assets associated with your NFTs at `https://test.paxfinancial.ai/obj/obj-XXXXXXXXXX/[Id].json` where `[Id]` is the token ID of the NFT, which is a number from 0-4.
+
+## Acknowledgment
+
+This tutorial is based on a tutorial from  [LearnWeb3](https://learnweb3.io).

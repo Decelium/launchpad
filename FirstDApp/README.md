@@ -46,7 +46,7 @@ This tutorial assumes you have already:
     This will create files `mood_sol_MoodDiary.bin` and `mood_sol_MoodDiary.abi` in your project directory.
 
 
-## Deploy the smart contract to the Goerli Testnet
+### Deploy the smart contract to the Goerli Testnet
 
 1. Install the node.js packages `ethers` and `fs` in your project directory with the commands `npm install ethers` and `npm install fs` executed in your project directory.
 2. In your project directory create a JavaScript program by the name of `deploy.js` with the following contents
@@ -79,7 +79,7 @@ This tutorial assumes you have already:
     Replace `INFURA_API_KEY` with an Infura API key obtained from your Infura dashboard. Replace `YOUR_ETHEREUM_WALLET_PRIVATE_KEY` with your Ethereum wallet private key.
 3. Deploy the contract to Goerli Testnet with the command `node deploy.js`, issued in your project directory. If the deployment is successful, the first line output will be the contract address. Copy the contract address to the clipboard or to a temporary text file; it will be needed in subsequent steps.
 
-## Create the command line interface
+### Create the command line interface
 
 1. In the project directory, create a JavaScript file `get.js` with the following contents:
 
@@ -179,7 +179,7 @@ This tutorial assumes you have already:
 4. After approving the transaction, wait 15 seconds or so to allow the blockchain to be updated, and then check that you can get the mood by issuing, in the project directory, the command `node get`. If successful, you will see the mood you entered previously printed out.
 5. Practice setting and getting the mood.
 
-## Creating a web interface
+### Creating a web interface
 
 1. In your project directory created a directory called `static`. In the directory `static` create an HTML file with the following contents:
 
@@ -272,7 +272,7 @@ This tutorial assumes you have already:
     Replace `MOOD_CONTRACT_ADDRESS` with the contract address that you copied after you deployed the contract. Note that the text defining the data structure `MoodContractABI` is the contents of the mood_sol_MoodDiary.abi file.
 2. Check that the web interface works by serving it on a local webserver. A convenient choice is `lite-server`, which you install with `npm install -g lite-server`. Invoke lite-server by typing `lite-server` at the command line in the directory containing the HTML file, `[PROJECT_DIRECTORY]/static`.  You can then view the web page at `http://localhost:3000`. Enter a mood into the space and press the "Set mood" button. This should cause MetaMask to open and request you to confirm the transaction. Pressing the "Get mood" button will cause the mood to be printed out on the console of your web browser.
 
-## Deploy the website on Decelium
+### Deploy the website on Decelium
 
 1. `cd` to your `decelium/commands` directory. Deploy your website to Decelium with the command
 
@@ -284,5 +284,7 @@ Note that the trailing slash in the last argument is necessary.
 2.  Your website should be deployed to Decelium. If it has successfully deployed, you will see a line like `deployed...  obj-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  as  [filename]` where the `xxxx...` represents hexadecimal digits. This is an identifier unique to your deployment.
 You should be able to view your website deployed on Decelium at `https://test.paxfinancial.ai/obj/obj-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/` (note the trailing slash).
  
+## Acknowledgment
 
+This tutorial is based on a tutorial from  [LearnWeb3](https://learnweb3.io).
 
