@@ -1,0 +1,19 @@
+{
+  "name": "launchpad",
+  "version": "1.0.0",
+  "description": "getting started with Decelium",
+  "main": "index.js",
+  "scripts": {
+    "test": "sh test_script.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemming/launchpad.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chemming/launchpad/issues"
+  },
+  "homepage": "https://github.com/chemming/launchpad#readme"
+}
