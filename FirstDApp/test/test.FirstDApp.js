@@ -7,7 +7,7 @@ require('dotenv').config({path: __dirname+"/../../.env"});
 
 describe("First dApp", function() {
             
-        xit("should compile", function() {
+        it("should compile", function() {
         
             const extensions = ["abi","bin"];
             
@@ -29,7 +29,7 @@ describe("First dApp", function() {
         
         it("should deploy on the blockchain", function() {
             
-            result = execSync("node deploy_test.js");
+            result = execSync("node deploy.js");
             contract_address = result.toString().split('\n')[0];
             console.log(contract_address);
                 
