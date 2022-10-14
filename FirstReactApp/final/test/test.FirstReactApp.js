@@ -1,12 +1,21 @@
 
 
 const expect   = require("chai").expect;
-const { exec } = require('child_process');
-require('dotenv').config({path: __dirname+"/../../.env"}); 
+const { execSync } = require('child_process');
+require('dotenv').config({path: __dirname+"/../../../.env"}); 
 
 describe("First React App", function() { 
     
     it("should deploy", function() {
+        
+        const createUserCommand = "python3 "
+                                  + process.env.DECELIUM_PATH + "/commands/create_user.py "
+                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                  + process.env.DECELIUM_WALLET_USER + " "
+                                  + "test_user "
+                                  + process.env.TEST_DEPLOY_URL + " ";
+        
+        execSync( createUserCommand, (err,stdout,stderr) => {console.log(stdout);});
         
         const deployCommand = "python3 " 
                                  + process.env.DECELIUM_PATH + "/commands/deploy.py "  
@@ -14,9 +23,9 @@ describe("First React App", function() {
                                  + process.env.DECELIUM_WALLET_USER + " "
                                  + process.env.TEST_DEPLOY_URL + " "
                                  + "/test/testFirstReactApp/test.ipfs "
-                                 + __dirname + "/../build/ json";      
+                                 + __dirname + "/../build/ ";      
         
-        exec( deployCommand, (err,stdout,stderr) => {   
+        execSync( deployCommand, (err,stdout,stderr) => {   
             if (err) {
                 console.error(err);
             } else {
@@ -35,7 +44,7 @@ describe("First React App", function() {
             
         const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
             
-        response = fetch("https://test.paxfinancial.ai/obj/"+self_id+"/")
+        response = fetch("https://"+process.env.TEST_DEPLOY_URL+"/obj/"+self_id+"/")
                        .then((response) => response.text())
                        .then( function (data) {
                             console.log(data);
@@ -44,5 +53,13 @@ describe("First React App", function() {
                             expect(data).to.be.a('string').that.includes('<!doctype html>');
                        });           
         });
-    });    
+        const deleteUserCommand = "python3 "
+                                  + process.env.DECELIUM_PATH + "/commands/delete_user.py "
+                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                  + process.env.DECELIUM_WALLET_USER + " "
+                                  + "test_user "
+                                  + process.env.TEST_DEPLOY_URL + " ";
+        
+        execSync( deleteUserCommand, (err,stdout,stderr) => {console.log(stdout);});
+    }).timeout(90000);    
 });

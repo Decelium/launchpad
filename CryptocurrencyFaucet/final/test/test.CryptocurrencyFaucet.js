@@ -5,10 +5,10 @@ const chai         = require("chai");
 const expect       = require("chai").expect;
 const { execSync } = require('child_process');
 const fs           = require('fs');
-require('dotenv').config({path: __dirname+"/../../.env"});
+require('dotenv').config({path: __dirname+"/../../../.env"});
 chai.use(require('chai-bignumber')());
 
-describe("First dApp", function() {
+describe("Cryptocurrency faucet", function() {
 
     xit("should compile", function() {
         
@@ -66,6 +66,15 @@ describe("First dApp", function() {
         console.log(website_html);
         fs.writeFileSync(htmlFileName, website_html);
 
+        const createUserCommand = "python3 "
+                                  + process.env.DECELIUM_PATH + "/commands/create_user.py "
+                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                  + process.env.DECELIUM_WALLET_USER + " "
+                                  + "test_user "
+                                  + process.env.TEST_DEPLOY_URL + " ";
+        
+        execSync( createUserCommand, (err,stdout,stderr) => {console.log(stdout);});                 
+        
         const deployCommand = "python3 " 
             + process.env.DECELIUM_PATH + "/commands/deploy.py "  
             + process.env.DECELIUM_WALLET_FILE + " "
@@ -101,6 +110,14 @@ describe("First dApp", function() {
                                 expect(data).to.be.a('string').that.includes("<p>Enter the amount of DecBUX to mint:</p>");
                                 expect(data).to.be.a('string').that.includes("const mintCryptocurrencyPromise = MintContract.mint(BigInt(cryptocurrencyQuantity * 1e18));");
                            });           
-        });                   
+        });
+        const deleteUserCommand = "python3 "
+                                  + process.env.DECELIUM_PATH + "/commands/delete_user.py "
+                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                  + process.env.DECELIUM_WALLET_USER + " "
+                                  + "test_user "
+                                  + process.env.TEST_DEPLOY_URL + " ";
+        
+        execSync( deleteUserCommand, (err,stdout,stderr) => {console.log(stdout);});        
     }).timeout(60000);
 });

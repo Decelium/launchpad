@@ -3,7 +3,7 @@ const ethers       = require("ethers");
 const expect       = require("chai").expect;
 const { execSync } = require('child_process');
 const fs           = require('fs');
-require('dotenv').config({path: __dirname+"/../../.env"});
+require('dotenv').config({path: __dirname+"/../../../.env"});
 
 describe("First dApp", function() {
             
@@ -76,6 +76,15 @@ describe("First dApp", function() {
             console.log(website_html);
             fs.writeFileSync(htmlFileName, website_html);
             
+            const createUserCommand = "python3 "
+                                  + process.env.DECELIUM_PATH + "/commands/create_user.py "
+                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                  + process.env.DECELIUM_WALLET_USER + " "
+                                  + "test_user "
+                                  + process.env.TEST_DEPLOY_URL + " ";
+        
+            execSync( createUserCommand, (err,stdout,stderr) => {console.log(stdout);});
+                        
             const deployCommand = "python3 " 
                 + process.env.DECELIUM_PATH + "/commands/deploy.py "  
                 + process.env.DECELIUM_WALLET_FILE + " "
@@ -84,7 +93,7 @@ describe("First dApp", function() {
                 + "/test/testFirstReactApp/test.ipfs "
                 + __dirname + "/../static/ json";
             
-             execSync( deployCommand, (err,stdout,stderr) => {   
+            execSync( deployCommand, (err,stdout,stderr) => {   
                 if (err) {
                     console.error(err);
                 } else {
@@ -111,6 +120,14 @@ describe("First dApp", function() {
                                     expect(data).to.be.a('string').that.includes('<p>Here we can set or get the mood:</p>');
                                     expect(data).to.be.a('string').that.includes('<button onclick="getMood()">Get Mood</button>');
                                });           
-            });                   
+            });
+            const deleteUserCommand = "python3 "
+                                  + process.env.DECELIUM_PATH + "/commands/delete_user.py "
+                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                  + process.env.DECELIUM_WALLET_USER + " "
+                                  + "test_user "
+                                  + process.env.TEST_DEPLOY_URL + " ";
+        
+            execSync( deleteUserCommand, (err,stdout,stderr) => {console.log(stdout);});
         }).timeout(60000);
 }); 
