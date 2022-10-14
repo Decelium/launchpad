@@ -11,6 +11,7 @@ describe("First React App", function() {
         const deployCommand = "python3 " 
                                  + process.env.DECELIUM_PATH + "/commands/deploy.py "  
                                  + process.env.DECELIUM_WALLET_FILE + " "
+                                 + process.env.DECELIUM_WALLET_USER + " "
                                  + process.env.TEST_DEPLOY_URL + " "
                                  + "/test/testFirstReactApp/test.ipfs "
                                  + __dirname + "/../build/ json";      
