@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#for i in FirstReactApp FirstDApp CryptocurrencyFaucet NFT; do
-for i in CryptocurrencyFaucet; do
+for i in FirstReactApp FirstDApp CryptocurrencyFaucet NFT; do
 cd $i/final
     npm test
     cd ../..
