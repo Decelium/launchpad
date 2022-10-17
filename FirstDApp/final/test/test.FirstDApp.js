@@ -29,7 +29,7 @@ describe("First dApp", function() {
         
         it("should deploy on the blockchain", function() {
             
-            result = execSync("node deploy.js");
+            let result = execSync("node deploy.js");
             contract_address = result.toString().split('\n')[0];
             console.log(contract_address);
                 

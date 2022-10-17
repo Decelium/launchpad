@@ -10,7 +10,7 @@ chai.use(require('chai-bignumber')());
 
 describe("NFT", function() {
 
-    xit("should compile", function() {
+    it("should compile", function() {
         
             const extensions = ["abi","bin"];
             
@@ -32,7 +32,7 @@ describe("NFT", function() {
     
     it("should deploy on the blockchain", function() {
 
-        result = execSync("node deploy.js");
+        let result = execSync("node deploy.js");
         contract_address = result.toString().split('\n')[0];
         console.log(contract_address);
         
