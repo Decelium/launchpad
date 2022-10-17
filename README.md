@@ -33,7 +33,7 @@ We recommend following the tutorials in this order:
 
 Testing requires `node.js` to be installed. You must have Decelium installed, and have created a user and added some CPU to the user's account. You must have an Ethereum wallet with some Goerli test Ethereum in it. 
 You must have an Infura account, and obtain an API key from the Dashboard.
-You must create a file called `.env` in the root directory (i.e. the directory into which you cloned the Launchpad git repository) with the following contents:
+You must create a file called `.env` in the Launchpad root directory (i.e. the directory into which you cloned the Launchpad git repository) with the following contents:
 
         DECELIUM_PATH = 
         DECELIUM_WALLET_FILE =
@@ -42,7 +42,7 @@ You must create a file called `.env` in the root directory (i.e. the directory i
         INFURA_API_KEY = 
         WALLET_PRIVATE_KEY = 
 
-where `DECELIUM_PATH` is the path to your Decelium directory, `DECELIUM_WALLET_FILE` is the path to your Decelium wallet file, `DECELIUM_WALLET_USER` is a user in your Decelium wallet, `TEST_DEPLOY_URL` should be `dev.paxfinancial.ai`, `INFURA_API_KEY` is the Infura API key you obtained earlier, and `WALLET_PRIVATE_KEY` is the private key of your Ethereum wallet.
+where `DECELIUM_PATH` is the path to your Decelium directory, `DECELIUM_WALLET_FILE` is the path to your Decelium wallet file, `DECELIUM_WALLET_USER` is a user in your Decelium wallet, `TEST_DEPLOY_URL` should be `dev.paxfinancial.ai`, `INFURA_API_KEY` is the Infura API key you obtained earlier, and `WALLET_PRIVATE_KEY` is the private key of your Ethereum wallet. You must create a file called `.password` in the Launchpad root directory containing your Decelium wallet password.
 
 ### Running tests
 
