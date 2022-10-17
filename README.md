@@ -35,14 +35,14 @@ Testing requires `node.js` to be installed. You must have Decelium installed, an
 You must have an Infura account, and obtain an API key from the Dashboard.
 You must create a file called `.env` in the Launchpad root directory (i.e. the directory into which you cloned the Launchpad git repository) with the following contents:
 
-        DECELIUM_PATH = 
-        DECELIUM_WALLET_FILE =
-        DECELIUM_WALLET_USER = 
-        TEST_DEPLOY_URL = 
-        INFURA_API_KEY = 
-        WALLET_PRIVATE_KEY = 
+        DECELIUM_PATH = [path to your Decelium directory]
+        DECELIUM_WALLET_FILE = [path to your Decelium wallet file]
+        DECELIUM_WALLET_USER = [a user in your Decelium wallet]
+        TEST_DEPLOY_URL = dev.paxfinancial.ai
+        INFURA_API_KEY = [your Infura API key]
+        WALLET_PRIVATE_KEY = [the private key to your Ethereum wallet]
 
-where `DECELIUM_PATH` is the path to your Decelium directory, `DECELIUM_WALLET_FILE` is the path to your Decelium wallet file, `DECELIUM_WALLET_USER` is a user in your Decelium wallet, `TEST_DEPLOY_URL` should be `dev.paxfinancial.ai`, `INFURA_API_KEY` is the Infura API key you obtained earlier, and `WALLET_PRIVATE_KEY` is the private key of your Ethereum wallet. You must create a file called `.password` in the Launchpad root directory containing your Decelium wallet password.
+You must create a file called `.password` in the Launchpad root directory containing your Decelium wallet password.
 
 ### Running tests
 
