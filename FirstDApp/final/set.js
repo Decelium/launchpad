@@ -1,6 +1,8 @@
 #!/usr/local/bin/node
 
 const ethers = require('ethers');
+require('dotenv').config({path: __dirname+"/../../.env"});
+
 
 const MoodContractAddress = "0x7c18621dad55Cf0C0254af0d8b966238808C22bc";
 const MoodContractABI =         [{"inputs":[],
@@ -21,9 +23,9 @@ let MoodContract;
 let signer;
 
 const provider = new ethers.providers.WebSocketProvider(
-    'wss://goerli.infura.io/ws/v3/555a93ec0c824ebe96a4d930dcf30124');
+    'wss://goerli.infura.io/ws/v3/'+process.env.INFURA_API_KEY);
 
-const private_key = 'f2b6c1ba66e25eae8e6b3fcbab8f02e94cb942549bbede6cbd02f1b7d60ccad2';
+const private_key = process.env.WALLET_PRIVATE_KEY;
 const wallet = new ethers.Wallet(private_key);
 const account = wallet.connect(provider);
 

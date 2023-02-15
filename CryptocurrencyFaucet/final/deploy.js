@@ -7,10 +7,8 @@ const ethers = require('ethers');
 bytecode = fs.readFileSync('faucetContract_sol_Token.bin').toString();
 abi = JSON.parse(fs.readFileSync('faucetContract_sol_Token.abi').toString());
 
-//const provider = new ethers.providers.WebSocketProvider(
-//    'wss://goerli.infura.io/ws/v3/555a93ec0c824ebe96a4d930dcf30124');
-const provider = new ethers.providers.InfuraProvider("goerli","555a93ec0c824ebe96a4d930dcf30124");
-const private_key = 'f2b6c1ba66e25eae8e6b3fcbab8f02e94cb942549bbede6cbd02f1b7d60ccad2';
+const provider = new ethers.providers.InfuraProvider("goerli",INFURA_API_KEY);
+const private_key = WALLET_PRIVATE_KEY;
 const wallet = new ethers.Wallet(private_key);
 const account = wallet.connect(provider);
 
